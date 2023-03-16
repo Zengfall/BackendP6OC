@@ -5,13 +5,13 @@ const router = express.Router();
 const saucesCtrl = require("../controllers/sauce");
 // on appelle le middleware authentification qui protège les routes
 const auth = require("../middleware/auth");
-// on appelle multer pour ajout d'image
+// on appelle multer pour l'ajout d'image
 const multer = require("../middleware/multer-config");
 //-------------------------------------------
 
-// ROUTES SAUCES
-//----------------------------------------------------------------------------------
-// intercepte les requetes get
+//Les différentes routes sauce
+
+// intercepte les requetes get 
 router.get("/", auth, saucesCtrl.getAllSauce);
 // intercepte les requetes get
 router.get("/:id", auth, saucesCtrl.getOneSauce);
@@ -21,7 +21,7 @@ router.post("/", auth, multer, saucesCtrl.createSauce);
 router.put("/:id", auth, multer, saucesCtrl.updateSauce);
 // intercepte les requetes delete
 router.delete("/:id", auth, saucesCtrl.deleteSauce);
-// intercepte requete post de like
+// intercepte requete post de like et dislike
 router.post("/:id/like", auth, saucesCtrl.likeDislikeSauce);
 //----------------------------------------------------------
 
